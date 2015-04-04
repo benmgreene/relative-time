@@ -1,6 +1,6 @@
 RelativeTime = 
-  from: (time) ->
-    diff = TimeSync.serverTime() - time.valueOf()
+  from: (time, interval = undefined) ->
+    diff = TimeSync.serverTime(undefined, interval) - time.valueOf()
 
     seconds = Math.abs(diff) / 1000
     minutes = seconds / 60

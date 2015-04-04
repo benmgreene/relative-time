@@ -1,4 +1,5 @@
 Package.describe({
+  name: "stratogee:relative-time",
   summary: "Nice relative time-ago based on Trello's algorithm",
   version: "1.0.0",
   git: "https://github.com/stratogee/relative-time"
@@ -13,7 +14,7 @@ Package.onUse(function(api) {
     'underscore',
     'templating',
     'ui',
-    'mrt:moment@2.8.1'
+    'momentjs:moment'
   ], 'client');
 
   api.use(['mizzao:timesync@0.2.2'], ['client', 'server']);
