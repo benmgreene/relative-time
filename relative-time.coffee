@@ -28,4 +28,28 @@ RelativeTime =
     else
       moment(time).format('MMM D, YYYY') + " at " + moment(time).format('h:mm a')
 
+  microFrom: (time, interval = undefined) ->
+    diff = TimeSync.serverTime(undefined, interval) - time.valueOf()
+
+    seconds = Math.abs(diff) / 1000
+    minutes = seconds / 60
+    hours = minutes / 60
+    days = hours / 24
+    months = days / 30
+    years = months / 12
+
+    if seconds < 60
+      "#{Math.floor(seconds)}s"
+    else if minutes < 60
+      "#{Math.floor(minutes)}m"
+    else if hours < 24
+      "#{Math.floor(hours)}h"
+    else if days < 30
+      "#{Math.floor(days)}d"
+    else if months < 12
+      "#{Math.floor(months)}mo"
+    else
+      "#{Math.floor(years)}y"
+
 UI.registerHelper "relativeTime", RelativeTime.from
+UI.registerHelper "relativeTimeMicro", RelativeTime.microFrom
